@@ -1,0 +1,137 @@
+*{
+  margin: 0;
+  padding: 0;
+  
+}
+
+ul,li,ol{
+  list-style: none;
+}
+
+
+body,html {
+  position: relative;
+  overflow: hidden;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: radial-gradient(ellipse at left top, #fdb7b9 20%, #de5d6f 50%, #b1414d);
+}
+div {
+  transform-style: preserve-3d;
+}
+.container {
+  perspective: 280px;
+  transform: rotate(24deg);
+}
+
+/* flip style */
+.flip {
+  position: absolute;
+  top: -280px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+@for $i from 1 through 200 {
+  .rotate:nth-of-type(#{$i}) {
+    animation: rotation linear infinite reverse;
+    animation-delay: random(9999) + 50000 * -1ms;
+    animation-duration: random(50000) + 20000 + ms;
+    @keyframes rotation {
+      0% {
+        transform: rotateY(0deg);
+      }
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+  }
+  .rotate:nth-of-type(#{$i}) .flip_rotate {
+    transform: rotateX(random(45) + deg);
+  }
+  .rotate:nth-of-type(#{$i}) .flip_pos {
+    transform: translateY(random(200) + 180 + px);
+  }
+  .rotate:nth-of-type(#{$i}) .flip {
+    left: calc(30% + #{random(300) + 200}px);
+  }
+}
+
+@for $i from 1 through 120 {
+  .rotate:nth-of-type(#{$i}) .flip {
+    background-color: #f9f2ee;
+    box-shadow: 0px 0px 10px 1px #f9f2ee;
+    animation: rotate01 random(30000) + 3000 + ms infinite;
+    @keyframes rotate01 {
+      0% {
+        transform: scale3d(0.5, 0.5, 0.5) rotateY(0);
+        opacity: 0.8;
+      }
+      25% {
+        opacity: 0.6;
+      }
+      50% {
+        transform: rotateY(180deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale3d(0.5, 0.5, 0.5) rotateY(180deg);
+        opacity: 0.6;
+      }
+    }
+  }
+}
+@for $i from 120 through 200 {
+  .rotate:nth-of-type(#{$i}) .flip {
+    background-color: #f9d2d3;
+    animation: rotate02 random(30000) + 3000 + ms infinite;
+    @keyframes rotate02 {
+      0% {
+        transform: scale3d(0.5, 0.5, 0.5) rotateY(0);
+        opacity: 0.4;
+      }
+      25% {
+        opacity: 0.1;
+      }
+      50% {
+        transform: scale3d(0.5, 0.5, 0.5) rotateY(180deg);
+        opacity: 0.4;
+      }
+      100% {
+        transform: scale3d(0.5, 0.5, 0.5) rotateY(180deg);
+        opacity: 0.1;
+      }
+    }
+  }
+}
+
+#study-collection{
+  width: 1360px;
+  left: 20%;
+  position: absolute;
+}
+#study-list{
+  li{
+    margin: 30px;
+    color: black;
+    font-weight: bold;
+    line-height: 30px;
+    
+  }
+  a{
+    color:blueviolet;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  span{
+    color:cornflowerblue;
+    font-weight: bold;
+  }
+}
